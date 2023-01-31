@@ -10,12 +10,16 @@ export const ContactForm = () => {
 
   const handleChangeName = event => {
     const { value } = event.target;
+
     setName(value);
   };
 
   const handleChangeNumber = event => {
     const { value } = event.target;
-    setNumber(value);
+    const regex = /^[0-9\b]+$/;
+    if (value === '' || regex.test(value)) {
+      setNumber(value);
+    }
   };
 
   const handleFormSubmit = event => {
@@ -73,7 +77,6 @@ export const ContactForm = () => {
         placeholder="123-45-67"
         value={number}
         onChange={handleChangeNumber}
-        pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
         title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
         required
       />
