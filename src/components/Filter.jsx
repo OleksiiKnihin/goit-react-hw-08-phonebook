@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { setFilter } from 'redux/contacts/filterSlice';
+import { TextField, Box } from '@mui/material';
 
 export const Filter = () => {
   const dispatch = useDispatch();
@@ -10,14 +11,21 @@ export const Filter = () => {
   };
 
   return (
-    <div>
-      <label>Find contacts by Name </label>
-      <input
-        type="text"
-        name="filter"
-        placeholder="Angelina"
-        onChange={handleChange}
+    <Box
+      component="form"
+      sx={{
+        '& > :not(style)': { width: '25ch' },
+      }}
+      noValidate
+      autoComplete="off"
+      onChange={handleChange}
+    >
+      <TextField
+        id="standard-basic"
+        label="Find contacts by name:"
+        variant="standard"
+        align="center"
       />
-    </div>
+    </Box>
   );
 };
